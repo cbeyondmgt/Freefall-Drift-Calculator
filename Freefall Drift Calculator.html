@@ -1,0 +1,120 @@
+<html>
+<head>
+    
+<title>Skydiving Freefall Drift Calculator</title>
+    
+</head>
+
+    <body>
+        
+        <h1>Skydiving Freefall Drift Calculator</h1>
+        
+        <p>This tool will allow skydivers to accurately estimate their drift while in freefall. Using this information skydivers can be more prepared for jumps by knowing and selecting the best exit point over their intendend landing area.</p>
+
+        <table>
+        <th>
+            Altitude
+        </th>
+        
+        <th>
+            Wind Speed
+        </th>
+            
+        <th>
+            Wind Direction
+        </th>  
+            
+        <tr>
+            
+            <td>3000'</td>
+            <td>
+                <input type="text" id="3k" placeholder="Enter Kts">
+            </td>
+            
+            <td>
+                <input type="text" id="3kW" placeholder="Enter Wind Direction">
+            </td>
+            
+        </tr>
+        
+        <tr>
+
+        <td>6000'</td>
+        <td>
+            <input type="text" id="6k" placeholder="Enter Kts">
+        </td>
+
+        <td>
+            <input type="text" id="6kW" placeholder="Enter Wind Direction">
+        </td>
+
+        </tr>
+        
+        <tr>
+            
+            <td>9000'</td>
+            <td>
+                <input type="text" id="9k" placeholder="Enter Kts">
+            </td>
+
+            <td>
+                <input type="text" id="9kW" placeholder="Enter Wind Direction">
+            </td>
+            
+        </tr>  
+            
+        <tr>
+
+            <td>12000'</td>
+            <td>
+                <input type="text" id="12k" placeholder="Enter Kts">
+            </td>
+
+            <td>
+                <input type="text" id="12kW" placeholder="Enter Wind Direction">
+            </td>
+
+        </tr>
+        
+        </table>
+        
+        <p><button id="calcBtn">Calculate</button><button id="reset">Reset</button></p>
+
+
+
+        <script type="text/javascript">
+            
+            document.getElementById("calcBtn").onclick = function() {
+                
+                var windSpeedCalc = parseInt(document.getElementById("3k").value) + parseInt(document.getElementById("6k").value) + parseInt(document.getElementById("9k").value) + parseInt(document.getElementById("12k").value);
+                
+                var avgWindSpeed = windSpeedCalc / 4;
+                
+                var convWindSpeed = avgWindSpeed * 1.15;
+                
+                var calcWindSpeed = convWindSpeed / 60;
+                
+                var windSpeed = calcWindSpeed - .2;
+                
+                var finalSpeed = windSpeed.toFixed(2);
+                
+                var windDirCalc = parseInt(document.getElementById("3kW").value) + parseInt(document.getElementById("6kW").value) + parseInt(document.getElementById("9kW").value) + parseInt(document.getElementById("12kW").value);
+                
+                var avgWindDir = windDirCalc / 4;
+                
+                alert("Your freefall drift will be " + finalSpeed + " miles." + " Coming out of  " + avgWindDir + "\xB0");
+                
+            }
+            
+            document.getElementById("reset").onclick = function() {
+                
+                document.getElementById("3k").reset();
+                
+            }
+    
+
+        </script>
+
+    </body>
+
+</html>
