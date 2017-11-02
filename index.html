@@ -34,7 +34,7 @@
             </td>
             
             <td>
-                <input type="text" id="3kW" placeholder="Enter Wind Direction">
+                <input type="text" class="windDirection" id="3kW" placeholder="Enter Wind Direction">
             </td>
             
         </tr>
@@ -47,7 +47,7 @@
         </td>
 
         <td>
-            <input type="text" id="6kW" placeholder="Enter Wind Direction">
+            <input type="text" class="windDirection" id="6kW" placeholder="Enter Wind Direction">
         </td>
 
         </tr>
@@ -60,7 +60,7 @@
             </td>
 
             <td>
-                <input type="text" id="9kW" placeholder="Enter Wind Direction">
+                <input type="text" class="windDirection" id="9kW" placeholder="Enter Wind Direction">
             </td>
             
         </tr>  
@@ -73,14 +73,14 @@
             </td>
 
             <td>
-                <input type="text" id="12kW" placeholder="Enter Wind Direction">
+                <input type="text" class="windDirection" id="12kW" placeholder="Enter Wind Direction">
             </td>
 
         </tr>
         
         </table>
         
-        <p><button id="calcBtn">Calculate</button><button id="reset">Reset</button></p>
+        <p><button id="calcBtn">Calculate</button>
 
 
 
@@ -104,16 +104,20 @@
                 
                 var avgWindDir = windDirCalc / 4;
                 
+              console.log(document.getElementsByClassName("windDirection"));
+                
+                if (document.getElementsByClassName("windDirection")[0].value > 360) {
+                    
+                    alert("Wind direction cannot be greater than 360\xB0");
+                    
+                    document.getElementsByClassName("windDirection")[0].value = "";
+                    
+                }else
+                
                 alert("Your freefall drift will be " + finalSpeed + " miles." + " Coming out of  " + avgWindDir + "\xB0");
                 
             }
             
-            document.getElementById("reset").onclick = function() {
-                
-                document.getElementById("3k").reset();
-                
-            }
-    
 
         </script>
 
